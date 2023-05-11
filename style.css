@@ -1,0 +1,28 @@
+html {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1 {
+  text-align: center;
+  padding: 20px;
+  background-color: lightgray;
+}
+
+select {
+  margin-top: 5px;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.monster {
+  --scale: 1;
+  width: calc(500px * var(--scale));
+  height: calc(400px * var(--scale));
+  margin-top: 15px;
+  position: relative;
+  scale: var(--scale);
+}
+
+.monster img {
+  position: absolute;
+}
