@@ -37,7 +37,7 @@ function Monster1({ color, nose, mouth, arms }: { color: string; nose: string; m
 function Monster2({ color, nose, mouth, arms }: { color: string; nose: string; mouth: string; arms: number }) {
   return (
     <div className="monster">
-      <img src={img(`leg_${color}E.png`)} style={partStyle(285, 230)} />
+      <img src={img(`leg_${color}E.png`)} style={partStyle(285, 220)} />
       <img src={img(`leg_${color}E.png`)} style={partStyle(75, 210, 25, Flipping.X)} />
 
       <img src={img(`arm_${color}A.png`)} style={partStyle(310, 90 + arms, -25)} />
@@ -60,7 +60,7 @@ function Monster2({ color, nose, mouth, arms }: { color: string; nose: string; m
 function Monster3({ color, nose, mouth, arms }: { color: string; nose: string; mouth: string; arms: number }) {
   return (
     <div className="monster">
-      <img src={img(`leg_${color}A.png`)} style={partStyle(285, 230)} />
+      <img src={img(`leg_${color}A.png`)} style={partStyle(285, 240)} />
       <img src={img(`leg_${color}A.png`)} style={partStyle(75, 210, 45, Flipping.X)} />
 
       <img src={img(`arm_${color}E.png`)} style={partStyle(310, 100 + arms, -50)} />
@@ -81,11 +81,33 @@ function Monster3({ color, nose, mouth, arms }: { color: string; nose: string; m
   );
 }
 
+
+function Monster4({ color, nose, mouth, arms }: { color: string; nose: string; mouth: string; arms: number }) {
+  return (
+    <div className="monster">
+      <img src={img(`leg_${color}C.png`)} style={partStyle(260, 280)} />
+      <img src={img(`leg_${color}E.png`)} style={partStyle(75, 230, 45, Flipping.X)} />
+
+      <img src={img(`arm_${color}B.png`)} style={partStyle(310, 100 + arms, -50)} />
+      <img src={img(`arm_${color}D.png`)} style={partStyle(70, 90 + arms, -75, Flipping.XY)} />
+
+      <img src={img(`body_${color}E.png`)} style={partStyle(160, 80)} />
+
+      <img src={img(`eye_human_green.png`)} style={partStyle(220, 120)} />
+      <img src={img(`eye_human_green.png`)} style={partStyle(180, 120)} />
+      
+      <img src={img(`nose_${nose}.png`)} style={partStyle(220, 170)} />
+
+      <img src={img(`mouth${mouth}.png`)} style={partStyle(200, 220)} />
+    </div>
+  );
+}
+
 export default function App() {
   const [color, setColor] = React.useState('green');
   const [nose, setNose] = React.useState('red');
   const [mouth, setMouth] = React.useState('D');
-  const [monster, setMonster] = React.useState('3');
+  const [monster, setMonster] = React.useState('4');
   const [arms, setArms] = React.useState(0);
 
   return (
@@ -143,8 +165,10 @@ export default function App() {
             return <Monster1 color={color} nose={nose} mouth={mouth} arms={arms}></Monster1>;
           case '2':
             return <Monster2 color={color} nose={nose} mouth={mouth} arms={arms}></Monster2>;
-          case '3':
-            return <Monster3 color={color} nose={nose} mouth={mouth} arms={arms}></Monster3>;
+            case '3':
+              return <Monster3 color={color} nose={nose} mouth={mouth} arms={arms}></Monster3>;
+            case '4':
+              return <Monster4 color={color} nose={nose} mouth={mouth} arms={arms}></Monster4>;
         }
       })()}
     </div>
