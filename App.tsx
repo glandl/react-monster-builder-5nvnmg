@@ -57,11 +57,35 @@ function Monster2({ color, nose, mouth, arms }: { color: string; nose: string; m
   );
 }
 
+function Monster3({ color, nose, mouth, arms }: { color: string; nose: string; mouth: string; arms: number }) {
+  return (
+    <div className="monster">
+      <img src={img(`leg_${color}A.png`)} style={partStyle(285, 230)} />
+      <img src={img(`leg_${color}A.png`)} style={partStyle(75, 210, 45, Flipping.X)} />
+
+      <img src={img(`arm_${color}E.png`)} style={partStyle(310, 100 + arms, -50)} />
+      <img src={img(`arm_${color}E.png`)} style={partStyle(70, 90 + arms, -75, Flipping.XY)} />
+
+      <img src={img(`body_${color}D.png`)} style={partStyle(150, 100)} />
+
+      <img src={img(`detail_${color}_antenna_small.png`)} style={partStyle(175, 80, -10, Flipping.X)} />
+      <img src={img(`detail_${color}_antenna_small.png`)} style={partStyle(290, 90, 50)} />
+
+      <img src={img(`eye_red.png`)} style={partStyle(230, 120)} />
+      <img src={img(`eye_red.png`)} style={partStyle(180, 120)} />
+      
+      <img src={img(`nose_${nose}.png`)} style={partStyle(220, 160)} />
+
+      <img src={img(`mouth${mouth}.png`)} style={partStyle(200, 220)} />
+    </div>
+  );
+}
+
 export default function App() {
   const [color, setColor] = React.useState('green');
   const [nose, setNose] = React.useState('red');
   const [mouth, setMouth] = React.useState('D');
-  const [monster, setMonster] = React.useState('1');
+  const [monster, setMonster] = React.useState('3');
   const [arms, setArms] = React.useState(0);
 
   return (
@@ -73,6 +97,7 @@ export default function App() {
         <select onChange={(e) => setMonster(e.target.value)} defaultValue={monster}>
           <option value="1">Monster 1</option>
           <option value="2">Monster 2</option>
+          <option value="3">Monster 3</option>
         </select>
       </label>
 
@@ -118,6 +143,8 @@ export default function App() {
             return <Monster1 color={color} nose={nose} mouth={mouth} arms={arms}></Monster1>;
           case '2':
             return <Monster2 color={color} nose={nose} mouth={mouth} arms={arms}></Monster2>;
+          case '3':
+            return <Monster3 color={color} nose={nose} mouth={mouth} arms={arms}></Monster3>;
         }
       })()}
     </div>
